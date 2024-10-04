@@ -1,19 +1,18 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import axios from "axios";
 import {People} from "../types/swapi-types";
+import axiosInstance from "./axios-instance";
 
 @Injectable({
     providedIn: 'root'
 })
 export class SwapiServiceService {
+    private peopleUrl: string = 'people/';
 
-    constructor(private http: HttpClient) {
-    }
+    constructor() { }
 
     async getAllPeople() {
         try {
-            const response = await axios.get<People>('https://swapi.dev/api/people/');
+            const response = await axiosInstance.get<People>(this.peopleUrl);
             return response.data;
         } catch (error) {
             console.error(error);

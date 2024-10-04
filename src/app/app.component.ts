@@ -14,8 +14,7 @@ import {CommonModule} from "@angular/common";
 export class AppComponent {
     people?: People;
 
-    constructor(private swapiService: SwapiServiceService) {
-    }
+    constructor(private swapiService: SwapiServiceService) { }
 
     ngOnInit() {
         this.swapiService.getAllPeople()
